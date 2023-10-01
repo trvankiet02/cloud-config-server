@@ -27,6 +27,7 @@ springdoc:
     com.trvankiet.app
   api-docs:
     path: /v3/api-docs/user-service
+    
 #management:
 #  tracing:
 #    sampling:
