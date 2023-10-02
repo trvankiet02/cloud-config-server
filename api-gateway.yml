@@ -84,6 +84,7 @@ spring:
             - Path=/${api.prefix}/${api.version}/users/**, 
               /${api.prefix}/${api.version}/credentials/**, 
               /${api.prefix}/${api.version}/token/**, 
+              /${api.prefix}/${api.version}/auth/**,
               /v3/api-docs/user-service
 
 springdoc:
