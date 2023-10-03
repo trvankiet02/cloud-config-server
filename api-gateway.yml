@@ -86,7 +86,13 @@ spring:
               /${api.prefix}/${api.version}/token/**, 
               /${api.prefix}/${api.version}/auth/**,
               /v3/api-docs/user-service
-
+          
+        - id: proxy-client
+          uri: lb://proxy-client
+          predicates:
+            - Path=/${api.prefix}/**, 
+              /v3/api-docs/proxy-client
+              
 springdoc:
     swagger-ui:
         urls:
