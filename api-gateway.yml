@@ -120,6 +120,8 @@ springdoc:
         - name: user-service
           url: /v3/api-docs/user-service
 
+        - name: proxy-client
+          url: /v3/api-docs/proxy-client
 #management:
 #  tracing:
 #    sampling:
