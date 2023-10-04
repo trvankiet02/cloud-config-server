@@ -19,13 +19,15 @@ spring:
         cors-configurations:
           '[/**]':
             allowed-origins: "*"
+            allowed-headers: "*"
             allowed-methods:
+              - HEAD
+              - OPTIONS
               - GET
               - POST
               - PUT
               - DELETE
               - PATCH
-              - OPTIONS
       discovery:
         locator:
           enabled: true
