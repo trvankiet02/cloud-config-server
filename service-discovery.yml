@@ -1,6 +1,6 @@
 eureka:
   instance:
-    hostname: localhots
+    hostname: localhost
   client:
     registerWithEureka: false
     fetchRegistry: false
