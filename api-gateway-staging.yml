@@ -14,22 +14,6 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-      default-filters:
-        - DedupeResponseHeader=Access-Control-Allow-Origin
-      globalcors:
-        add-to-simple-url-handler-mapping: true
-        cors-configurations:
-          '[/**]':
-            allowed-origins: "*"
-            allowed-headers: "*"
-            allowed-methods:
-              - HEAD
-              - OPTIONS
-              - GET
-              - POST
-              - PUT
-              - DELETE
-              - PATCH
       discovery:
         locator:
           enabled: true
