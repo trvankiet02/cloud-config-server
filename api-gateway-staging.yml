@@ -1,3 +1,9 @@
+#spring:
+#  application:
+#    name: api-gateway
+#  profiles:
+#    active: dev
+
 eureka:
   client:
     register-with-eureka: false
@@ -5,143 +11,164 @@ eureka:
 server:
   port: 8080
 
+api:
+  prefix: api
+  version: v1
+
 spring:
   application:
     name: api-gateway
-# api:
-#   prefix: api
-#   version: v1
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          '[/**]':
+            allowed-origins: "*"
+            allowed-headers: "*"
+            allowed-methods:
+              - HEAD
+              - OPTIONS
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - PATCH
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: conversation-service
+          uri: lb://conversation-service
+          predicates:
+            - Path=/${api.prefix}/${api.version}/**
+          filters:
+            - AuthFilter
 
-# spring:
-#   application:
-#     name: api-gateway
-#   cloud:
-#     gateway:
-#       discovery:
-#         locator:
-#           enabled: true
-#       routes:
-#         - id: conversation-service
-#           uri: lb://conversation-service
-#           predicates:
-#             - Path=/${api.prefix}/${api.version}/conversations/**, 
-#               /${api.prefix}/${api.version}/conversation-members/**, 
-#               /v3/api-docs/conversation-service
+        - id: friend-service
+          uri: lb://friend-service
+          predicates:
+            - Path=/${api.prefix}/${api.version}/**
+          filters:
+            - AuthFilter
 
-#         - id: friend-service
-#           uri: lb://friend-service
-#           predicates:
-#             - Path=/${api.prefix}/${api.version}/friends/**, 
-#               /${api.prefix}/${api.version}/friendships/**, 
-#               /v3/api-docs/friend-service
+        - id: group-service
+          uri: lb://group-service
+          predicates:
+            - Path=/${api.prefix}/${api.version}/**
+          filters:
+            - AuthFilter
 
-#         - id: group-service
-#           uri: lb://group-service
-#           predicates:
-#             - Path=/${api.prefix}/${api.version}/groups/**, 
-#               /${api.prefix}/${api.version}/group-members/**, /${api.prefix}/${api.version}/events/**, 
-#               /v3/api-docs/group-service
+        - id: media-service
+          uri: lb://media-service
+          predicates:
+            - Path=/${api.prefix}/${api.version}/**
+          filters:
+            - AuthFilter
 
-#         - id: media-service
-#           uri: lb://media-service
-#           predicates:
-#             - Path=/${api.prefix}/${api.version}/albums/**, 
-#               /${api.prefix}/${api.version}/files/**, 
-#               /v3/api-docs/media-service
+        - id: message-service
+          uri: lb://message-service
+          predicates:
+            - Path=/${api.prefix}/${api.version}/**
+          filters:
+            - AuthFilter
 
-#         - id: message-service
-#           uri: lb://message-service
-#           predicates:
-#             - Path=/${api.prefix}/${api.version}/messages/**, 
-#               /v3/api-docs/message-service
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/${api.prefix}/${api.version}/**
+          filters:
+            - AuthFilter
 
-#         - id: notification-service
-#           uri: lb://notification-service
-#           predicates:
-#             - Path=/${api.prefix}/${api.version}/notifications/**, 
-#               /v3/api-docs/notification-service
+        - id: post-service
+          uri: lb://post-service
+          predicates:
+            - Path=/${api.prefix}/${api.version}/**
+          filters:
+            - AuthFilter
 
-#         - id: post-service
-#           uri: lb://post-service
-#           predicates:
-#             - Path=/${api.prefix}/${api.version}/posts/**, 
-#               /${api.prefix}/${api.version}/comments/**, 
-#               /${api.prefix}/${api.version}/reactions/**, 
-#               /v3/api-docs/post-service
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/${api.prefix}/${api.version}/**
+          filters:
+            - AuthFilter
 
-#         - id: user-service
-#           uri: lb://user-service
-#           predicates:
-#             - Path=/${api.prefix}/${api.version}/users/**, 
-#               /${api.prefix}/${api.version}/credentials/**, 
-#               /${api.prefix}/${api.version}/token/**, 
-#               /${api.prefix}/${api.version}/auth/**,
-#               /v3/api-docs/user-service
-          
-#         - id: proxy-client
-#           uri: lb://proxy-client
-#           predicates:
-#             - Path=/${api.prefix}/**, 
-#               /v3/api-docs/proxy-client
-              
-# springdoc:
-#     swagger-ui:
-#         urls:
-#         - name: conversation-service
-#           url: /v3/api-docs/conversation-service
+        - id: proxy-client
+          uri: lb://proxy-client
+          predicates:
+            - Path=/${api.prefix}/**
+          filters:
+            - AuthFilter
+            -
+        - id: api-docs
+          uri: no://op
+          predicates:
+            - Path=/v3/api-docs/**  # URI cụ thể bạn muốn bỏ qua
+          filters:
+            - SetStatus=200  # Đặt mã trạng thái 200 để bỏ qua route
 
-#         - name: friend-service
-#           url: /v3/api-docs/friend-service
+springdoc:
+  swagger-ui:
+    urls:
+      - name: conversation-service
+        url: /v3/api-docs/conversation-service
 
-#         - name: group-service
-#           url: /v3/api-docs/group-service
+      - name: friend-service
+        url: /v3/api-docs/friend-service
 
-#         - name: media-service
-#           url: /v3/api-docs/media-service
+      - name: group-service
+        url: /v3/api-docs/group-service
 
-#         - name: message-service
-#           url: /v3/api-docs/message-service
+      - name: media-service
+        url: /v3/api-docs/media-service
 
-#         - name: notification-service
-#           url: /v3/api-docs/notification-service
+      - name: message-service
+        url: /v3/api-docs/message-service
 
-#         - name: post-service
-#           url: /v3/api-docs/post-service
+      - name: notification-service
+        url: /v3/api-docs/notification-service
 
-#         - name: user-service
-#           url: /v3/api-docs/user-service
+      - name: post-service
+        url: /v3/api-docs/post-service
 
-#         - name: proxy-client
-#           url: /v3/api-docs/proxy-client
+      - name: user-service
+        url: /v3/api-docs/user-service
 
-# resilience4j:
-#   circuitbreaker:
-#     instances:
-#       apiGateway:
-#         register-health-indicator: true
-#         event-consumer-buffer-size: 10
-#         automatic-transition-from-open-to-half-open-enabled: true
-#         failure-rate-threshold: 50
-#         minimum-number-of-calls: 5
-#         permitted-number-of-calls-in-half-open-state: 3
-#         sliding-window-size: 10
-#         wait-duration-in-open-state: 5s
-#         sliding-window-type: COUNT_BASED
+      - name: proxy-client
+        url: /v3/api-docs/proxy-client
 
-# management:
-#   endpoints:
-#     web:
-#       exposure:
-#         include: "*"
-#   health:
-#     circuitbreakers:
-#       enabled: true
-#   endpoint:
-#     health:
-#       show-details: always
-          
+resilience4j:
+  circuitbreaker:
+    instances:
+      apiGateway:
+        register-health-indicator: true
+        event-consumer-buffer-size: 10
+        automatic-transition-from-open-to-half-open-enabled: true
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        wait-duration-in-open-state: 5s
+        sliding-window-type: COUNT_BASED
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+
 #management:
 #  tracing:
 #    sampling:
 #      probability: 1.0
+
 
