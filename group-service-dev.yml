@@ -13,7 +13,7 @@ spring:
     name: group-service
   data:
     mongodb:
-      database: group
+      database: group-service
       uri: mongodb+srv://admin:123@springbootwithmongodb.xffyyfw.mongodb.net/
 
 springdoc:
