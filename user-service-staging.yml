@@ -1,0 +1,71 @@
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://service-discovery:8761/eureka/
+
+server:
+  port: 8000
+
+spring:
+  application:
+    name: user-service
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: tranvankiet2002@gmail.com
+    password: rscbevlhjdhnwcsr
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://user-service.ccdzqrbnif7m.us-east-1.rds.amazonaws.com:1433;databaseName=user_service;encrypt=false;trustServerCertificate=true;sslProtocol=TLSv1.2;
+    username: admin
+    password: 12345678
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: sql_server
+    database-platform: org.hibernate.dialect.SQLServerDialect
+
+springdoc:
+  packages-to-scan:
+    com.trvankiet.app
+  api-docs:
+    path: /v3/api-docs/user-service
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      userService:
+        register-health-indicator: true
+        event-consumer-buffer-size: 10
+        automatic-transition-from-open-to-half-open-enabled: true
+        failure-rate-threshold: 50
+        minimum-number-of-calls: 5
+        permitted-number-of-calls-in-half-open-state: 3
+        sliding-window-size: 10
+        wait-duration-in-open-state: 5s
+        sliding-window-type: COUNT_BASED
+
+  management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+    
+#management:
+#  tracing:
+#    sampling:
+#      probability: 1.0
