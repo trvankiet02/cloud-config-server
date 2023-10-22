@@ -11,6 +11,10 @@ server:
 spring:
   application:
     name: user-service
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
   mail:
     host: smtp.gmail.com
     port: 587
@@ -53,7 +57,7 @@ resilience4j:
         wait-duration-in-open-state: 5s
         sliding-window-type: COUNT_BASED
 
-  management:
+management:
   endpoints:
     web:
       exposure:
@@ -64,6 +68,11 @@ resilience4j:
   endpoint:
     health:
       show-details: always
+
+cloudinary:
+  cloud-name: djzwxw0ao
+  api-key: 137985542995866
+  api-secret: mwPz2mtnm-7AaOb4uh8UzqGjiHk
     
 #management:
 #  tracing:

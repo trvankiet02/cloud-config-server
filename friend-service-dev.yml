@@ -21,6 +21,7 @@ springdoc:
     com.trvankiet.app
   api-docs:
     path: /v3/api-docs/friend-service
+    
 #management:
 #  tracing:
 #    sampling:
