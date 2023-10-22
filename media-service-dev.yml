@@ -11,6 +11,10 @@ server:
 spring:
   application:
     name: media-service
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
   data:
     mongodb:
       database: media_service
@@ -21,6 +25,12 @@ springdoc:
     com.trvankiet.app
   api-docs:
     path: /v3/api-docs/media-service
+
+cloudinary:
+  cloud-name: djzwxw0ao
+  api-key: 137985542995866
+  api-secret: mwPz2mtnm-7AaOb4uh8UzqGjiHk
+
 #management:
 #  tracing:
 #    sampling:
