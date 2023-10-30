@@ -1,0 +1,14 @@
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
