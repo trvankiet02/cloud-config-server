@@ -30,7 +30,7 @@ spring:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     url: jdbc:sqlserver://sqlserver-stem-backend.ccdzqrbnif7m.us-east-1.rds.amazonaws.com:1433;databaseName=user_service;encrypt=false;trustServerCertificate=true;sslProtocol=TLSv1.2;
     username: sa
-    password: 123
+    password: 19052002
   jpa:
     hibernate:
       ddl-auto: update
