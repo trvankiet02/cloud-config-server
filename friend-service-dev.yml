@@ -14,7 +14,7 @@ spring:
   data:
     mongodb:
       database: friend_service
-      uri: mongodb+srv://admin:123@springbootwithmongodb.xffyyfw.mongodb.net/
+      uri: mongodb+srv://admin:admin@java-cluster.dydtuf8.mongodb.net/
 
 springdoc:
   packages-to-scan:
