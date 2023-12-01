@@ -29,8 +29,8 @@ spring:
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     url: jdbc:sqlserver://aws-sqlserver.cy1fudrhefax.us-east-1.rds.amazonaws.com:1433;databaseName=user_service;encrypt=false;trustServerCertificate=true;sslProtocol=TLSv1.2;
-    username: sa
-    password: 19052002
+    username: admin
+    password: 12345678
   jpa:
     hibernate:
       ddl-auto: update
