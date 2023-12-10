@@ -29,8 +29,8 @@ spring:
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     url: jdbc:sqlserver://localhost;databaseName=user_service;encrypt=false;trustServerCertificate=true;sslProtocol=TLSv1.2;characterEncoding=UTF-8
-    username: admin
-    password: 12345678
+    username: sa
+    password: 19052002
   jpa:
     hibernate:
       ddl-auto: update
