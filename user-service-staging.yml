@@ -28,7 +28,7 @@ spring:
             enable: true
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://aws-sqlserver.cy1fudrhefax.us-east-1.rds.amazonaws.com:1433;databaseName=user_service;encrypt=false;trustServerCertificate=true;sslProtocol=TLSv1.2;characterEncoding=UTF-8
+    url: jdbc:sqlserver://localhost;databaseName=user_service;encrypt=false;trustServerCertificate=true;sslProtocol=TLSv1.2;characterEncoding=UTF-8
     username: admin
     password: 12345678
   jpa:

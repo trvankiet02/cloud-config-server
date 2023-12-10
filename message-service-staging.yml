@@ -14,7 +14,7 @@ spring:
   data:
     mongodb:
       database: message_service
-      uri: mongodb+srv://admin:admin@java-cluster.dydtuf8.mongodb.net/
+      uri: mongodb://localhost:27017/
 
 springdoc:
   packages-to-scan:
