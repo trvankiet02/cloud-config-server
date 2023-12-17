@@ -22,11 +22,9 @@ spring:
           '[/**]':
             allow-credentials: true
             allowed-origins: 
-              - "http://localhost:3000/"
-            allowed-headers: 
-              - "Content-Type"
-              - "Authorization"
-              - "Cache-Control"
+              - "http://localhost:3000"
+              - "http://localhost:3001"
+            allowed-headers: "*"
             allowed-methods:
               - HEAD
               - OPTIONS
