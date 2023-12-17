@@ -30,6 +30,7 @@ spring:
               - PUT
               - DELETE
               - PATCH
+            allow-credentials: true
       discovery:
         locator:
           enabled: true
