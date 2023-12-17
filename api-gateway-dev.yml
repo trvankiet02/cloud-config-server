@@ -15,17 +15,17 @@ spring:
   cloud:
     gateway:
       default-filters:
-        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
+        - DedupeResponseHeader=Access-Control-Allow-Origin
       globalcors:
         add-to-simple-url-handler-mapping: true
         cors-configurations:
-          "[/**]":
-            allow-credentials: true
+          '[/**]':
+            allower-credentials: true
             allowed-origins: "*"
             allowed-headers: "*"
             allowed-methods:
-              - OPTIONS
               - HEAD
+              - OPTIONS
               - GET
               - POST
               - PUT
@@ -82,6 +82,7 @@ management:
   endpoint:
     health:
       show-details: always
+
 #management:
 #  tracing:
 #    sampling:
