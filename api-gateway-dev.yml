@@ -19,7 +19,8 @@ spring:
       globalcors:
         add-to-simple-url-handler-mapping: true
         cors-configurations:
-          '[/**]':
+          "[/**]":
+            allow-credentials: true
             allowed-origins: "*"
             allowed-headers: "*"
             allowed-methods:
@@ -30,7 +31,6 @@ spring:
               - PUT
               - DELETE
               - PATCH
-            allow-credentials: true
       discovery:
         locator:
           enabled: true
@@ -82,7 +82,6 @@ management:
   endpoint:
     health:
       show-details: always
-
 #management:
 #  tracing:
 #    sampling:
