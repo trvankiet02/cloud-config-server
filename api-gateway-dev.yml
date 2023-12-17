@@ -20,7 +20,7 @@ spring:
         add-to-simple-url-handler-mapping: true
         cors-configurations:
           '[/**]':
-            allower-credentials: true
+            allow-credentials: true
             allowed-origins: 
               - "http://localhost:3000"
               - "http://localhost:3001"
