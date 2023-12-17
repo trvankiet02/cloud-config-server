@@ -21,7 +21,7 @@ spring:
         cors-configurations:
           '[/**]':
             allower-credentials: true
-            allowed-origins: "*"
+            allowed-origins: "localhost:3000"
             allowed-headers: "*"
             allowed-methods:
               - HEAD
