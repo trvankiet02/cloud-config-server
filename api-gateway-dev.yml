@@ -22,7 +22,7 @@ spring:
           '[/**]':
             allow-credentials: true
             allowed-origins: 
-              - "http://localhost:3000"
+              - "http://localhost:3000/"
             allowed-headers: 
               - "Content-Type"
               - "Authorization"
