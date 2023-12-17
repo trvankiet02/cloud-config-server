@@ -15,7 +15,7 @@ spring:
   cloud:
     gateway:
       default-filters:
-        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        - DedupeResponseHeader=Access-Control-Allow-Origin
       globalcors:
         add-to-simple-url-handler-mapping: true
         cors-configurations:
@@ -34,6 +34,20 @@ spring:
       discovery:
         locator:
           enabled: true
+
+      routes:
+        - id: conversation-service
+            uri: lb://conversation-service
+            predicates:
+              - Path=/**
+            filters:
+              - SetPath=/**
+              - name: WebSocket
+                args:
+                  # Specify the subprotocols supported by your WebSocket server
+                  subprotocols: your-subprotocol
+                  # Specify allowed origins for WebSocket requests
+                  allowedOrigins: http://localhost:3000
 
 springdoc:
   swagger-ui:
