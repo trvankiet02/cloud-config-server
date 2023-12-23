@@ -13,7 +13,7 @@ spring:
   application:
     name: api-gateway
   cloud:
-        gateway:
+    gateway:
       routes:
         - id: websocket_route
           uri: lb:ws://conversation-service
@@ -28,7 +28,7 @@ spring:
       globalcors:
         add-to-simple-url-handler-mapping: true
         cors-configurations:
-          '[/**]':
+          "[/**]":
             allow-credentials: true
             allowed-origins:
               - "http://localhost:3000"
@@ -94,7 +94,6 @@ management:
   endpoint:
     health:
       show-details: always
-
 #management:
 #  tracing:
 #    sampling:
