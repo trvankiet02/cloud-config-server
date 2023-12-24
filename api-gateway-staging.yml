@@ -55,19 +55,19 @@ springdoc:
   swagger-ui:
     urls:
       - name: conversation-service
-        url: lb://conversation-service/v3/api-docs/conversation-service
+        url: http://conversation-service:8100/v3/api-docs/conversation-service
       - name: friend-service
-        url: lb://friend-service/v3/api-docs/friend-service
+        url: http://friend-service:8200/v3/api-docs/friend-service
       - name: group-service
-        url: lb://group-service/v3/api-docs/group-service
+        url: http://group-service:8300/v3/api-docs/group-service
       - name: media-service
-        url: lb://media-service/v3/api-docs/media-service
+        url: http://media-service:8400/v3/api-docs/media-service
       - name: post-service
-        url: lb://post-service/v3/api-docs/post-service
+        url: http://post-service:8700/v3/api-docs/post-service
       - name: user-service
-        url: lb://user-service/v3/api-docs/user-service
+        url: http://user-service:8000/v3/api-docs/user-service
       - name: exam-service
-        url: lb://exam-service/v3/api-docs/exam-service
+        url: http://exam-service:8800/v3/api-docs/exam-serDvice
 
 resilience4j:
   circuitbreaker:
@@ -94,7 +94,6 @@ management:
   endpoint:
     health:
       show-details: always
-      
 # management:
 #  tracing:
 #    sampling:
