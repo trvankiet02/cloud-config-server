@@ -33,7 +33,7 @@ spring:
           "[/**]":
             allow-credentials: true
             allowed-origins:
-              - "http://localhost:3000"
+              - "https://stem-frontend-fszuh8zbx-trn-van-kits-projects.vercel.app"
             allowed-headers:
               - "*"
             allowed-methods:
