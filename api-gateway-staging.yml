@@ -3,7 +3,7 @@ eureka:
     register-with-eureka: false
 
 server:
-  port: 8080
+  port: 9000
 
 api:
   prefix: api
@@ -14,14 +14,26 @@ spring:
     name: api-gateway
   cloud:
     gateway:
+      routes:
+        - id: websocket_route
+          uri: lb:ws://conversation-service
+          predicates:
+            - Path=/ws/**
+          filters:
+            - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
+
       default-filters:
-        - DedupeResponseHeader=Access-Control-Allow-Origin
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
+
       globalcors:
         add-to-simple-url-handler-mapping: true
         cors-configurations:
-          '[/**]':
-            allowed-origins: "*"
-            allowed-headers: "*"
+          "[/**]":
+            allow-credentials: true
+            allowed-origins:
+              - "http://localhost:3000"
+            allowed-headers:
+              - "*"
             allowed-methods:
               - HEAD
               - OPTIONS
@@ -30,6 +42,7 @@ spring:
               - PUT
               - DELETE
               - PATCH
+
       discovery:
         locator:
           enabled: true
@@ -45,10 +58,6 @@ springdoc:
         url: /v3/api-docs/group-service
       - name: media-service
         url: /v3/api-docs/media-service
-      - name: message-service
-        url: /v3/api-docs/message-service
-      - name: notification-service
-        url: /v3/api-docs/notification-service
       - name: post-service
         url: /v3/api-docs/post-service
       - name: user-service
@@ -81,8 +90,8 @@ management:
   endpoint:
     health:
       show-details: always
-
-#management:
+      
+# management:
 #  tracing:
 #    sampling:
 #      probability: 1.0
