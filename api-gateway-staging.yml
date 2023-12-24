@@ -1,6 +1,10 @@
 eureka:
+  instance:
+    hostname: service-discovery
   client:
     register-with-eureka: false
+    service-url:
+      defaultZone: http://service-discovery:8761/eureka/
 
 server:
   port: 9000
