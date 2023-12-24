@@ -1,6 +1,4 @@
 eureka:
-  instance:
-    hostname: service-discovery
   client:
     register-with-eureka: false
     service-url:
