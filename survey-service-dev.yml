@@ -1,0 +1,29 @@
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 8800
+
+spring:
+  application:
+    name: survey-service
+  data:
+    mongodb:
+      database: survey_service
+#      uri: mongodb+srv://admin:admin@java-cluster.dydtuf8.mongodb.net/
+      uri: mongodb://localhost:27017/
+
+springdoc:
+  packages-to-scan:
+    com.trvankiet.app
+  api-docs:
+    path: /v3/api-docs/survey-service
+    
+#management:
+#  tracing:
+#    sampling:
+#      probability: 1.0
