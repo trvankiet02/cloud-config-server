@@ -68,6 +68,10 @@ springdoc:
         url: /v3/api-docs/user-service
       - name: exam-service
         url: /v3/api-docs/exam-service
+      - name: survey-service
+        url: /v3/api-docs/survey-service
+      - name: report-service
+        url: /v3/api-docs/report-service
 
 resilience4j:
   circuitbreaker:
