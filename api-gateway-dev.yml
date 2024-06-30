@@ -60,8 +60,6 @@ springdoc:
         url: /v3/api-docs/group-service
       - name: media-service
         url: /v3/api-docs/media-service
-      - name: message-service
-        url: /v3/api-docs/message-service
       - name: notification-service
         url: /v3/api-docs/notification-service
       - name: post-service
